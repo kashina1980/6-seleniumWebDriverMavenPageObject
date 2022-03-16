@@ -1,30 +1,31 @@
 package mantis.pages;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage {
+import java.util.List;
+
+public class ViewIssuesDetailsPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    @FindBy(css = "#username")
-    private WebElement loginField;
+    @FindBy(css = "input[value='Delete']")
+    private WebElement deleteIssueButton;
 
+    @FindBy(css = "input[value='Delete Issues']")
+    private WebElement deleteIssueСonfirmation;
 
-    public LoginPage(WebDriver driver) {
+    public ViewIssuesDetailsPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 30, 500);
         PageFactory.initElements(driver, this);
     }
 
-    public void login(String login) {
-        driver.get("https://academ-it.ru/mantisbt/login_page.php");
-
-        loginField.sendKeys(login);
-        loginField.sendKeys(Keys.ENTER);
+    public void deleteNewIssue() {
+        deleteIssueButton.click();
+        deleteIssueСonfirmation.click();
     }
 }
