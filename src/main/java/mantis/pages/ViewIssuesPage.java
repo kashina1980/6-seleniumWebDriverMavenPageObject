@@ -20,10 +20,10 @@ public class ViewIssuesPage {
     private WebElement newIssueSummary;
 
     @FindBy(css = "#buglist tbody tr:nth-child(1) td.column-id")
-    public WebElement newIssueID;
+    public WebElement lastIssueId;
 
     @FindBy(css = "#buglist tbody tr:nth-child(1) td.column-id a")
-    private WebElement newIssueIDButton;
+    private WebElement lastIssueIdButton;
 
     public ViewIssuesPage(WebDriver driver) {
         this.driver = driver;
@@ -39,11 +39,11 @@ public class ViewIssuesPage {
         return newIssueSummary.getText();
     }
 
-    public String getNewIssueID() {
-        return newIssueID.getText();
+    public String getLastIssueId() {
+        return lastIssueId.getText();
     }
 
     public void goToViewIssuesDetailsPage() {
-        newIssueIDButton.click();
+        lastIssueIdButton.click();
     }
 }

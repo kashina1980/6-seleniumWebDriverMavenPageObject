@@ -14,14 +14,14 @@ public class ReportIssuesPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    @FindBy(css = "input#summary")
+    @FindBy(css = "#summary")
     private WebElement summaryField;
 
-    @FindBy(css = "textarea#description")
+    @FindBy(css = "#description")
     private WebElement descriptionField;
 
-//    @FindBy(css = "input[value='Submit Issue']")
-//    private WebElement submitButton;
+    @FindBy(css = "input[value='Submit Issue']")
+    private WebElement submitButton;
 
     public ReportIssuesPage(WebDriver driver) {
         this.driver = driver;
@@ -32,9 +32,7 @@ public class ReportIssuesPage {
     public void createIssues(String summary, String description) {
         summaryField.sendKeys(summary);
         descriptionField.sendKeys(description);
-        WebElement button = driver.findElement(By.cssSelector("input[value='Submit Issue']"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
-        button.click();
+        submitButton.click();
     }
 
 

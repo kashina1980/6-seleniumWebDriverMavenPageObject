@@ -31,7 +31,7 @@ public class IssuesTest extends BaseTest {
         mantisSite.getMainPage().goToViewIssuesPage();
         String actualIssueSummary = mantisSite.getViewIssuesPage().getNewIssueSummary();
         Assertions.assertEquals("new bug", actualIssueSummary);
-        String idNewIssue = mantisSite.getViewIssuesPage().getNewIssueID();
+        String idNewIssue = mantisSite.getViewIssuesPage().getLastIssueId();
         System.out.println(idNewIssue);
     }
 
@@ -41,11 +41,11 @@ public class IssuesTest extends BaseTest {
         mantisSite.login("admin", "admin20");
 
         mantisSite.getMainPage().goToViewIssuesPage();
-        String idNewIssue = mantisSite.getViewIssuesPage().getNewIssueID();
+        String idNewIssue = mantisSite.getViewIssuesPage().getLastIssueId();
         mantisSite.getViewIssuesPage().goToViewIssuesDetailsPage();
         mantisSite.getViewIssuesDetailsPage().deleteNewIssue();
         mantisSite.getMainPage().goToViewIssuesPage();
-        String actualFirstIssueID = mantisSite.getViewIssuesPage().getNewIssueID();
+        String actualFirstIssueID = mantisSite.getViewIssuesPage().getLastIssueId();
         System.out.println(idNewIssue);
         System.out.println(actualFirstIssueID);
         Assertions.assertNotEquals(idNewIssue, actualFirstIssueID);
@@ -62,12 +62,12 @@ public class IssuesTest extends BaseTest {
         mantisSite.getMainPage().goToViewIssuesPage();
         String actualIssueSummary = mantisSite.getViewIssuesPage().getNewIssueSummary();
         softAssert.assertThat(actualIssueSummary).isEqualTo("new bug");
-        String idNewIssue = mantisSite.getViewIssuesPage().getNewIssueID();
+        String idNewIssue = mantisSite.getViewIssuesPage().getLastIssueId();
 
         mantisSite.getViewIssuesPage().goToViewIssuesDetailsPage();
         mantisSite.getViewIssuesDetailsPage().deleteNewIssue();
         mantisSite.getMainPage().goToViewIssuesPage();
-        String actualFirstIssueID = mantisSite.getViewIssuesPage().getNewIssueID();
+        String actualFirstIssueID = mantisSite.getViewIssuesPage().getLastIssueId();
         System.out.println(idNewIssue);
         System.out.println(actualFirstIssueID);
         softAssert.assertThat(idNewIssue).isNotEqualTo(actualFirstIssueID);
